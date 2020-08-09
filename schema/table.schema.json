@@ -1,0 +1,72 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://www.afmsoftware.com/database/table.json",
+    "type": "object",
+    "title": "The table description",
+    "required": [
+        "name",
+        "columns"
+    ],
+    "properties": {
+        "name": {
+            "$id": "#/properties/name",
+            "type": "string",
+            "title": "The name of the table",
+            "default": "",
+            "examples": [
+                "mytable"
+            ],
+            "pattern": "[A-Za-z0-9\\.\\-\\_]"
+        },
+        "columns": {
+            "$id": "#/properties/columns",
+            "title": "The columns that make up the table",
+            "type":"array",
+            "items": {
+                "type":"object",
+                "properties": {
+                    "name": {
+                        "$id": "#/properties/columns/name",
+                        "title": "Column Name",
+                        "description": "Name of this column in the table.",
+                        "type":"string"
+                    },
+                    "type": {
+                        "$id": "#/properties/columns/type",
+                        "title": "Data Type",
+                        "description": "The enum type of this column.",
+                        "type":"string",
+                        "enum": ["boolean", "integer", "float", "decimal", "datetime", "timestamp", "binary", "blob", "text"]
+                    },
+                    "unsigned":{
+                        "type":"boolean"
+                    },
+                    "size": {
+                        "type":"integer",
+                        "minimum": 1
+                    },
+                    "precision": {
+                        "type":"integer",
+                        "minimum": 0
+                    },
+                    "autoincrement": {
+                        "type":"boolean"
+                    },
+                    "primary": {
+                        "type":"boolean"
+                    },
+                    "allow_null": {
+                        "type":"boolean"
+                    },
+                    "unique": {
+                        "type":"boolean"
+                    }
+                },
+                "required": ["name", "type"]
+            },
+            "minItems":1
+        }
+    }
+}
+   
